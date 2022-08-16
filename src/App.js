@@ -1,8 +1,11 @@
+import React from "react";
+import "./App.css"
+import ChatBody from "./components/chatBody/ChatBody";
 
 function App() {
   return (
-    <div>
-     Preparing Workspace
+    <div className="main">
+     <ChatBody />
     </div>
   );
 }
