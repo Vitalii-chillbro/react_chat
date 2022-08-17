@@ -6,21 +6,21 @@
 .chatcontent__heading {
     display: flex;
     align-items: center;
-    height: 50px;
+    height: 90px;
     margin-left: 20px;
 }
 
 .chatcontent__main {
     background-color: #fff;
     border-top: 1px solid #D0D0D0;
-    height: 350px;
+    height: max-content;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .chatcontent__footer {
     border-top: 1px solid #D0D0D0;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
 }
 
 .send_wrap {
@@ -28,7 +28,7 @@
     background-color: #fff;
     border-radius: 13px;
     width: 100%;
-    margin: 15px 12px 15px 12px;
+    margin: 22px 12px 15px 12px;
 }
 
 .send_wrap input {
