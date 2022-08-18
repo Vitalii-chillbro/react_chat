@@ -3,6 +3,10 @@
     justify-content: space-between;
     margin-bottom: 40px;
     border-bottom: 1px solid #D0D0D0;
+    cursor: pointer;
+}
+.chatlist_items_wrap:hover {
+    background-color: #f4f3f8;
 }
 .chatlist_items_avatar {
     width: 50px;

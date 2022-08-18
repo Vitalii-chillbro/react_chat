@@ -3,8 +3,16 @@ import "./chatList.css";
 import userPicture from './img/User_0.jpg';
 import checkmark from './img/green_checkmark.png';
 import ChatListUser from './ChatListUser';
+import { useRef } from 'react';
 
 const ChatList = () => {
+    
+    const ref = useRef(null)
+
+    const clearInput = () => {
+        ref.current.value = ''
+    }
+
     return (
         <div className='main__chatlist'>
             <div className="chatlist__heading">
@@ -17,7 +25,14 @@ const ChatList = () => {
                         <button className='search-btn'>
                             <i className='fa fa-search'></i>
                         </button>
-                        <input type="text" placeholder='Search or start new chat' required />
+                        <input 
+                        ref={ref}
+                        type="text" placeholder='Search or start new chat' required />
+                        <button 
+                        onClick={clearInput}
+                        className='close-btn'>
+                            X
+                        </button>
                     </div>
                 </div>
             </div>
