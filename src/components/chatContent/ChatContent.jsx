@@ -1,72 +1,85 @@
-import React, { useState } from 'react'
-import MyMessage from '../UI/MyMessage'
-import UserMessage from '../UI/UserMessage'
-import './chatContent.css'
+import React, { useState } from "react";
+import { user } from "../contacts/user";
+
+import Message from "../UI/Message";
+import "./chatContent.css";
 
 const ChatContent = () => {
+  //MyMessage
 
-    //MyMessage
+  const [messages, setMessages] = useState([
+    {
+      value: "I'm having breakfast righ now, can't you wait for 10 minutes?",
+      isAnswer: false,
+      created_at: new Date(),
+    },
+  ]);
 
-    const [messages, setMessages] = useState([{ title: "I'm having breakfast righ now, can't you wait for 10 minutes?" }])
+  const [newMessage, setNewMessage] = useState("");
 
-    const [title, setTitle] = useState('')
+  const addNewPost = () => {
+    setMessages([
+      ...messages,
+      { value: newMessage, created_at: new Date(), isAnswer: false },
+    ]);
+    setNewMessage("");
+  };
 
-    const addNewPost = () => {
-        const newMessage = {
-            title
-        }
-        setMessages([...messages, newMessage])
-        setTitle('')
-    }
+  console.log(messages);
 
-    //UserMessage
-    const url = 'https://api.chucknorris.io/jokes/random';
-    
-    const [answers, setAnswers] = useState([])
+  //UserMessage
+  const url = "https://api.chucknorris.io/jokes/random";
 
-    const callAnswer = () => {
-        setTimeout(() => {
-            fetch(url)
-            .then((res) => res.json())
-            .then((data) => setAnswers(cur => [...cur, data]));
-        }, 10000)
-      };
+  const callAnswer = () => {
+    setTimeout(() => {
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) =>
+          setMessages((cur) => [
+            ...cur,
+            { ...data, isAnswer: true, created_at: new Date() },
+          ])
+        );
+    }, 1000);
+  };
 
-    return (
-        <div className='main__chatcontent'>
-            <div className='chatcontent__heading'>
-                Avatar+status   Name
-            </div>
-            <div className="chatcontent__main" >
-                {answers.map((answer) => (
-                    <UserMessage answer={answer} key={Math.random()} />
-                ))}
-                {messages.map((message) => (
-                    <MyMessage message={message} title={title} key={Math.random()}  />
-                ))}
-              
-            </div>
-            <div className='chatcontent__footer'>
-                <div className="send_wrap">
-                    <input
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        type="text"
-                        placeholder='Type your message'
-                    />
-                    <button
-                        className="btnSendMsg"
-                        id="sendMsgBtn"
-                        onClick={() => {callAnswer(); addNewPost()}}
-                        disabled={!title}
-                    >
-                        <i className="fa fa-paper-plane"></i>
-                    </button>
-                </div>
-            </div>
-
+  return (
+    <div className="main__chatcontent">
+      <div className="chatcontent__heading">Avatar+status Name</div>
+      <div className="chatcontent__main">
+        {messages.map(({ value, created_at, isAnswer }) => (
+          <Message
+            value={value}
+            key={created_at}
+            created_at={created_at}
+            isAnswer={isAnswer}
+            imageUrl={user.image}
+          />
+        ))}
+      </div>
+      <div className="chatcontent__footer">
+        <div className="send_wrap">
+          <input
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            type="text"
+            placeholder="Type your message"
+          />
+          <button
+            className="btnSendMsg"
+            id="sendMsgBtn"
+            onClick={() => {
+              callAnswer();
+              addNewPost();
+            }}
+            disabled={!newMessage}
+          >
+            <i className="fa fa-paper-plane"></i>
+          </button>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default ChatContent
+export default ChatContent;

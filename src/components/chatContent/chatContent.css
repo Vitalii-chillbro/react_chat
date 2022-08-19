@@ -11,11 +11,16 @@
 }
 
 .chatcontent__main {
+    overflow: scroll;
     background-color: #fff;
     border-top: 1px solid #D0D0D0;
-    height: max-content;
+    height: 450px;
     display: flex;
     flex-flow: column nowrap;
+}
+
+.chatcontent__main::-webkit-scrollbar {
+    display: none;
 }
 
 .chatcontent__footer {

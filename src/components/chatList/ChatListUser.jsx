@@ -1,13 +1,17 @@
-import React from 'react'
-import { user } from '../contacts/user'
-import ChatListItem from './ChatListItem'
+import React from "react";
+import { user } from "../contacts/user";
+import ChatListItem from "./ChatListItem";
 
-const ChatListUser = () => {
-    return (
-        <div className='chatlist_items'>
-            {user.map(userInfo => <ChatListItem key={userInfo.id} userInfo={userInfo} />)}
-        </div>
-    )
-}
+const ChatListUser = ({ searchName }) => {
+  return (
+    <div className="chatlist_items">
+      {user
+        .filter((userInfo) => userInfo.name.toLowerCase().includes(searchName))
+        .map((userInfo) => (
+          <ChatListItem key={userInfo.id} userInfo={userInfo} />
+        ))}
+    </div>
+  );
+};
 
-export default ChatListUser
+export default ChatListUser;
