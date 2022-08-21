@@ -10,7 +10,7 @@ const ChatListItem = (props) => {
                 <span className='chatlist_items_message'>{props.userInfo.message}</span>
                 </span>
             </div>
-            <span className='chatlist_items_data'>{props.userInfo.data}</span>
+            <span className='chatlist_items_data'>{props.userInfo.date}</span>
         </div>
     )
 }

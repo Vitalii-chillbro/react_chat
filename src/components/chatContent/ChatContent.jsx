@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { user } from "../contacts/user";
+import { users } from "../contacts/users";
 
 import Message from "../UI/Message";
+import UserProfile from "../UI/UserProfile";
 import "./chatContent.css";
 
 const ChatContent = () => {
@@ -25,8 +26,6 @@ const ChatContent = () => {
     setNewMessage("");
   };
 
-  console.log(messages);
-
   //UserMessage
   const url = "https://api.chucknorris.io/jokes/random";
 
@@ -40,12 +39,14 @@ const ChatContent = () => {
             { ...data, isAnswer: true, created_at: new Date() },
           ])
         );
-    }, 1000);
+    }, 10000);
   };
 
   return (
     <div className="main__chatcontent">
-      <div className="chatcontent__heading">Avatar+status Name</div>
+      <div className="chatcontent__heading">
+        <UserProfile />
+      </div>
       <div className="chatcontent__main">
         {messages.map(({ value, created_at, isAnswer }) => (
           <Message
@@ -53,7 +54,7 @@ const ChatContent = () => {
             key={created_at}
             created_at={created_at}
             isAnswer={isAnswer}
-            imageUrl={user.image}
+            imageUrl={users.image}
           />
         ))}
       </div>

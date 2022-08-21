@@ -1,6 +1,6 @@
 .main__chatcontent {
     flex-grow: 1;
-    max-width: 83%;
+    width: 700px;
 }
 
 .chatcontent__heading {

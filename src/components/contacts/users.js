@@ -1,8 +1,8 @@
-export const user = [
+export const users = [
     {
         id: 1,
         image: "https://randomuser.me/api/portraits/women/88.jpg",
-        data: "Jan 12, 2022",
+        date: "Jan 12, 2022",
         name: 'Alice Freeman',
         isOnline: true,
         message: "You are the worst",
@@ -10,7 +10,7 @@ export const user = [
     {
         id: 2,
         image: "https://randomuser.me/api/portraits/women/48.jpg",
-        data: "Feb 18, 2022",
+        date: "Feb 18, 2022",
         name: "Josephina",
         isOnline: true,
         message: "We are losing money! Quick!",
@@ -18,7 +18,7 @@ export const user = [
     {
         id: 3,
         image: "https://randomuser.me/api/portraits/men/6.jpg",
-        data: "Feb 18, 2022",
+        date: "Feb 18, 2022",
         name: 'Velazquez',
         isOnline: true,
         message: "Quickly come to the meeting room 1B, we have a big server issue",
@@ -26,7 +26,7 @@ export const user = [
     {
         id: 4,
         image: "https://randomuser.me/api/portraits/women/49.jpg",
-        data: "Feb 14, 2022",
+        date: "Feb 14, 2022",
         name: 'Barrera',
         isOnline: false,
         message: 'We need you!',
@@ -34,7 +34,7 @@ export const user = [
     {
         id: 5,
         image: "https://randomuser.me/api/portraits/men/28.jpg",
-        data: "Feb 18, 2022",
+        date: "Feb 18, 2022",
         name: 'Louis',
         isOnline: true,
         message: 'Hurry up! Everyone is waiting for you!',
@@ -42,7 +42,7 @@ export const user = [
     {
         id: 6,
         image: "https://randomuser.me/api/portraits/women/90.jpg",
-        data: "March 22, 2022",
+        date: "March 22, 2022",
         name: 'Paulina',
         isOnline: false,
         message: 'Ok, i will try to do it.',
@@ -50,7 +50,7 @@ export const user = [
     {
         id: 7,
         image: "https://randomuser.me/api/portraits/men/44.jpg",
-        data: "April 26, 2022",
+        date: "April 26, 2022",
         name: 'Mark',
         isOnline: true,
         message: "Okay, have a nice day!",
@@ -58,7 +58,7 @@ export const user = [
     {
         id: 8,
         image: "https://randomuser.me/api/portraits/men/61.jpg",
-        data: "Feb 18, 2022",
+        date: "Feb 18, 2022",
         name: 'Carl',
         isOnline: false,
         message: "You have 5 min! I cover you!",
@@ -66,7 +66,7 @@ export const user = [
     {
         id: 9,
         image: "https://randomuser.me/api/portraits/women/77.jpg",
-        data: "May 7, 2022",
+        date: "May 7, 2022",
         name: 'Kate',
         isOnline: true,
         message: "See you later!",
@@ -74,7 +74,7 @@ export const user = [
     {
         id: 10,
         image: "https://randomuser.me/api/portraits/women/29.jpg",
-        data: "June 29, 2022",
+        date: "June 29, 2022",
         name: 'Sophie',
         isOnline: true,
         message: "You need to upload your code",

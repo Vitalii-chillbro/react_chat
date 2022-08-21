@@ -1,16 +1,26 @@
 import React from "react";
+import { useEffect } from "react";
+import { useRef } from "react";
+import { users } from "../contacts/users";
 
 import "./message.css";
 
 const Message = ({ value, isAnswer, created_at, imageUrl }) => {
+  const messageRef = useRef(null)
+
+  useEffect(() => {
+    messageRef.current.scrollIntoView({ block: 'end', behavior: 'smooth' });
+  })
+
   return (
-    <div
+    <div 
       className={`message_container ${isAnswer && "answer_message_container"}`}
+      ref={messageRef}
     >
       {isAnswer && (
         <div className="avatar_container">
           <img
-            src={"https://randomuser.me/api/portraits/women/88.jpg"}
+            src={users[1].image}
             className="avatar"
             alt="avatar"
           />

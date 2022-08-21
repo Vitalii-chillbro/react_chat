@@ -1,11 +1,11 @@
 import React from "react";
-import { user } from "../contacts/user";
+import { users } from "../contacts/users";
 import ChatListItem from "./ChatListItem";
 
 const ChatListUser = ({ searchName }) => {
   return (
     <div className="chatlist_items">
-      {user
+      {users
         .filter((userInfo) => userInfo.name.toLowerCase().includes(searchName))
         .map((userInfo) => (
           <ChatListItem key={userInfo.id} userInfo={userInfo} />
