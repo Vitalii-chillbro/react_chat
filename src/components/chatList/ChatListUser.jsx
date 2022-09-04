@@ -6,7 +6,7 @@ const ChatListUser = ({ searchName }) => {
   return (
     <div className="chatlist_items">
       {users
-        .filter((userInfo) => userInfo.name.toLowerCase().includes(searchName))
+        .filter((userInfo) => userInfo.name.toLowerCase().includes(searchName.toLowerCase()))
         .map((userInfo) => (
           <ChatListItem key={userInfo.id} userInfo={userInfo} />
         ))}
