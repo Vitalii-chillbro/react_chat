@@ -1,5 +1,5 @@
 .main__chatlist {
-    width: 500px;
+    width: 50%;
     border-right: 1px solid #D0D0D0;
 }
 
@@ -25,6 +25,7 @@
     left: 35px;
 }
 .search_wrap {
+    width: 95%;
     display: flex;
     justify-content: space-between;
     align-items: center;
