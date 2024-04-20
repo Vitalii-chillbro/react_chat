@@ -1,37 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { users } from "../contacts/users";
 
 import Message from "../UI/Message";
 import UserProfile from "../UI/UserProfile";
 import "./chatContent.css";
+import { Link, useParams } from "react-router-dom";
 
-const ChatContent = () => {
-  //MyMessage
-
-  const [messages, setMessages] = useState([
-    {
-      value: "I'm having breakfast righ now, can't you wait for 10 minutes?",
-      isAnswer: false,
-      created_at: new Date(),
-    },
-  ]);
-
+const ChatContent = ({ showChatContent, setShowChatContent }) => {
+  const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [timerId, setTimerId] = useState(null);
+
+  const { userId } = useParams();
+
+  useEffect(() => {
+    const storedMessages =
+      JSON.parse(localStorage.getItem(`user_${userId}_messages`)) || [];
+    if (storedMessages.length > 0) {
+      setMessages(storedMessages);
+    } else {
+      const user = users.find((user) => user.id === Number(userId));
+      if (user) {
+        setMessages([
+          { value: user.message, created_at: user.date, isAnswer: true },
+        ]);
+      }
+    }
+  }, [userId]);
+
+  useEffect(() => {
+    if (messages.length > 0) {
+      localStorage.setItem(`user_${userId}_messages`, JSON.stringify(messages));
+    }
+  }, [messages, userId]);
 
   const addNewPost = () => {
-    setMessages([
-      ...messages,
-      { value: newMessage, created_at: new Date(), isAnswer: false },
-    ]);
-    setNewMessage("");
+    if (newMessage.trim() !== "") {
+      setMessages([
+        ...messages,
+        { value: newMessage, created_at: new Date(), isAnswer: false },
+      ]);
+      setNewMessage("");
+      callAnswer();
+    }
   };
 
-  //UserMessage
-  const url = "https://api.chucknorris.io/jokes/random";
-
   const callAnswer = () => {
-    setTimeout(() => {
-      fetch(url)
+    const id = setTimeout(() => {
+      fetch("https://api.chucknorris.io/jokes/random")
         .then((res) => res.json())
         .then((data) =>
           setMessages((cur) => [
@@ -39,22 +55,37 @@ const ChatContent = () => {
             { ...data, isAnswer: true, created_at: new Date() },
           ])
         );
-    }, 10000);
+    }, 3000);
+    setTimerId(id);
   };
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [userId, timerId]);
 
   return (
     <div className="main__chatcontent">
       <div className="chatcontent__heading">
-        <UserProfile />
+        <Link
+          to="/"
+          style={{ textDecoration: "none" }}
+          onClick={() => (!showChatContent ? null : setShowChatContent(false))}
+        >
+          <button>&larr;</button>
+        </Link>
+
+        <UserProfile userId={userId} />
       </div>
       <div className="chatcontent__main">
-        {messages.map(({ value, created_at, isAnswer }) => (
+        {messages.map(({ value, created_at, isAnswer }, index) => (
           <Message
             value={value}
-            key={created_at}
+            key={`${userId}-${index}`}
             created_at={created_at}
             isAnswer={isAnswer}
-            imageUrl={users.image}
+            imageUrl={users.find((user) => user.id === Number(userId))?.image}
           />
         ))}
       </div>
@@ -63,6 +94,11 @@ const ChatContent = () => {
           <input
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                addNewPost();
+              }
+            }}
             type="text"
             placeholder="Type your message"
           />
@@ -70,7 +106,6 @@ const ChatContent = () => {
             className="btnSendMsg"
             id="sendMsgBtn"
             onClick={() => {
-              callAnswer();
               addNewPost();
             }}
             disabled={!newMessage}

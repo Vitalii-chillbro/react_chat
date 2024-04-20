@@ -1,18 +1,19 @@
-import React from 'react'
-import './chatListItem.css'
+import React from "react";
+import "./chatListItem.css";
 
-const ChatListItem = (props) => {
-    return (
-        <div className='chatlist_items_wrap'>
-            <div className='chatlist_avname_wrap'>
-                <img className='chatlist_items_avatar' src={props.userInfo.image} alt='img' />
-                <span className='chatlist_items_name'>{props.userInfo.name} <br /> 
-                <span className='chatlist_items_message'>{props.userInfo.message}</span>
-                </span>
-            </div>
-            <span className='chatlist_items_data'>{props.userInfo.date}</span>
-        </div>
-    )
-}
+const ChatListItem = ({ userInfo }) => {
+  return (
+    <div className="chatlist-items_wrap">
+      <div className="chatlist-avname_wrap">
+        <img className="chatlist-items_avatar" src={userInfo.image} alt="img" />
+        <span className="chatlist-items_name">
+          {userInfo.name} <br />
+          <span className="chatlist-items_message">{userInfo.message}</span>
+        </span>
+      </div>
+      <span className="chatlist-items_data">{userInfo.date}</span>
+    </div>
+  );
+};
 
-export default ChatListItem
+export default ChatListItem;

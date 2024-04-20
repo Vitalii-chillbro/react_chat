@@ -20,7 +20,7 @@ const ChatList = () => {
           />
           <img alt="img" src={checkmark} width="30px" className="checkmark" />
         </div>
-        <div className="search_wrap">
+        <div className="search-wrap">
           <div>
             <button className="search-btn">
               <i className="fa fa-search"></i>
@@ -37,8 +37,8 @@ const ChatList = () => {
           </button>
         </div>
       </div>
-      <div className="chatlist_contacts">
-        <h2 className="chatlist_title">Chats</h2>
+      <div className="chatlist-contacts">
+        <h2 className="chatlist-title">Chats</h2>
         <ChatListUser searchName={searchName} />
       </div>
     </div>

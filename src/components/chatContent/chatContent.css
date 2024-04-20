@@ -1,6 +1,5 @@
 .main__chatcontent {
-    flex-grow: 1;
-    width: 70%;
+    flex: 2;
 }
 
 .chatcontent__heading {
@@ -60,4 +59,34 @@
 
 #sendMsgBtn i:hover, i:active {
     color: dodgerblue;
+}
+
+.chatcontent__heading button {
+    display: none;
+}
+
+@media (min-width: 320px) and (max-width: 699px) {
+    .main__chatcontent {
+        height: 100vh;
+    }
+
+    .chatcontent__heading {
+        height: 4rem;
+    }
+
+    .chatcontent__heading button {
+        display: block;
+        border: none;
+        font-size: 2rem;
+        background: inherit;
+    }
+
+    .chatcontent__main {
+        height: calc(100vh - 13rem);
+    }
+
+    .chatcontent__footer {
+        position: absolute;
+        bottom: 2rem;
+    }
 }

@@ -1,7 +1,15 @@
 .main__chatbody {
-    flex-grow: 1;
-    background-color: #f4f3f8;
-    border-radius: 10px;
-    margin: 15px 20px;
-    display: flex;
+  flex-grow: 1;
+  background-color: #f4f3f8;
+  border-radius: 10px;
+  margin: 15px 20px;
+  display: flex;
+}
+
+@media (min-width: 320px) and (max-width: 699px) {
+  .main__chatbody {
+    display: block;
+    width: 100%;
+    margin: 0;
   }
+}
