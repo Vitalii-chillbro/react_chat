@@ -14,16 +14,18 @@ const ChatContent = ({ showChatContent, setShowChatContent }) => {
   const { userId } = useParams();
 
   useEffect(() => {
-    const storedMessages =
-      JSON.parse(localStorage.getItem(`user_${userId}_messages`)) || [];
-    if (storedMessages.length > 0) {
-      setMessages(storedMessages);
-    } else {
-      const user = users.find((user) => user.id === Number(userId));
-      if (user) {
-        setMessages([
-          { value: user.message, created_at: user.date, isAnswer: true },
-        ]);
+    if (userId) {
+      const storedMessages =
+        JSON.parse(localStorage.getItem(`user_${userId}_messages`)) || [];
+      if (storedMessages.length > 0) {
+        setMessages(storedMessages);
+      } else {
+        const user = users.find((user) => user.id === Number(userId));
+        if (user) {
+          setMessages([
+            { value: user.message, created_at: user.date, isAnswer: true },
+          ]);
+        }
       }
     }
   }, [userId]);
