@@ -1,9 +1,9 @@
 import React from "react";
 import "./chatListItem.css";
 
-const ChatListItem = ({ userInfo }) => {
+const ChatListItem = ({ userInfo, clickHandler, showChatContent }) => {
   return (
-    <div className="chatlist-items_wrap">
+    <div className="chatlist-items_wrap" onClick={clickHandler}>
       <div className="chatlist-avname_wrap">
         <img className="chatlist-items_avatar" src={userInfo.image} alt="img" />
         <span className="chatlist-items_name">

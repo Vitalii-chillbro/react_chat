@@ -91,12 +91,10 @@
 }
 
 @media (min-width: 320px) and (max-width: 699px) {
-    .main__chatlist {
-        height: 100vh;
-    }
+    .main__chatlist {}
 
     .chatlist-contacts {
-        height: 75%;
+        height: 100vh;
     }
 }
 

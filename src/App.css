@@ -68,7 +68,7 @@ input {
   }
 
   #root {
-    overflow: hidden;
+    overflow: auto;
   }
 
   .main {

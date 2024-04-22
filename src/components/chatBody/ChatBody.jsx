@@ -14,11 +14,11 @@ const ChatBody = () => {
     <div className="main__chatbody">
       {window.innerWidth <= 699 ? (
         <>
-          <div
-            onClick={handleChatListClick}
-            style={{ display: showChatContent ? "none" : "flex" }}
-          >
-            <ChatList />
+          <div style={{ display: showChatContent ? "none" : "flex" }}>
+            <ChatList
+              clickHandler={handleChatListClick}
+              showChatContent={showChatContent}
+            />
           </div>
           <div style={{ display: showChatContent ? "flex" : "none" }}>
             <ChatContent

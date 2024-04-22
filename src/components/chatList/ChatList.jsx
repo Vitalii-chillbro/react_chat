@@ -5,7 +5,7 @@ import checkmark from "./img/green_checkmark.png";
 import ChatListUser from "./ChatListUser";
 import { useState } from "react";
 
-const ChatList = () => {
+const ChatList = ({ clickHandler, showChatContent }) => {
   const [searchName, setSearchName] = useState("");
 
   return (
@@ -39,7 +39,11 @@ const ChatList = () => {
       </div>
       <div className="chatlist-contacts">
         <h2 className="chatlist-title">Chats</h2>
-        <ChatListUser searchName={searchName} />
+        <ChatListUser
+          searchName={searchName}
+          clickHandler={clickHandler}
+          showChatContent={showChatContent}
+        />
       </div>
     </div>
   );

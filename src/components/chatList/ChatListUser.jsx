@@ -4,7 +4,7 @@ import ChatListItem from "./ChatListItem";
 import { Link } from "react-router-dom";
 import "./chatListItem.css";
 
-const ChatListUser = ({ searchName }) => {
+const ChatListUser = ({ searchName, clickHandler, showChatContent }) => {
   return (
     <div className="chatlist-items">
       {users
@@ -17,7 +17,11 @@ const ChatListUser = ({ searchName }) => {
             key={userInfo.id}
             style={{ textDecoration: "none", color: "inherit" }}
           >
-            <ChatListItem userInfo={userInfo} />
+            <ChatListItem
+              userInfo={userInfo}
+              clickHandler={clickHandler}
+              showChatContent={showChatContent}
+            />
           </Link>
         ))}
     </div>

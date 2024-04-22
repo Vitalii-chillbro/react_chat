@@ -82,7 +82,7 @@
     }
 
     .chatcontent__main {
-        height: calc(100vh - 13rem);
+        height: calc(100vh - 11.5rem);
     }
 
     .chatcontent__footer {
